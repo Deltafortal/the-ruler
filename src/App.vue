@@ -24,39 +24,38 @@ export default {
 <!---------------- Template ------------------------>
 <template>
 
-  <div class="container">
+    
+  <!-- Header -->
+  <AppHeader />
+    
+    
+  <!-- Body -->
+  <body>
+      
+    <!-- Description-->
+      
+      
+    <!-- Image -->
+      
+      
+    <!-- Choices -->
+      
+  </body>
+    
+    
+  <!-- Footer -->
+  <footer>
+      
+  </footer>
 
-    
-    <!-- Header -->
-    <AppHeader />
-    
-    
-    <!-- Body -->
-    <body>
-      
-      <!-- Description-->
-      
-      
-      <!-- Image -->
-      
-      
-      <!-- Choices -->
-      
-    </body>
-    
-    
-    <!-- Footer -->
-    <footer>
-      
-    </footer>
-
-  </div>
     
 </template>
 
 
 
 <!---------------- style ------------------------>
-<style>
+<style lang="scss">
+
+@use './assets//scss/style.scss';
 
 </style>
