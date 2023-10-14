@@ -3,10 +3,11 @@
 
 import AppHeader from './components/AppHeader.vue';
 import AppFooter from './components/AppFooter.vue';
+import AppBody from './components/AppBody.vue';
 
 export default {
 
-  components: { AppHeader, AppFooter },
+  components: { AppHeader, AppBody, AppFooter },
 
   data() {
     return {
@@ -15,7 +16,6 @@ export default {
     }
   },
   
-
 } 
 
 </script>
@@ -31,17 +31,7 @@ export default {
     
     
   <!-- Body -->
-  <body>
-      
-    <!-- Description-->
-      
-      
-    <!-- Image -->
-      
-      
-    <!-- Choices -->
-      
-  </body>
+  <AppBody />
     
     
   <!-- Footer -->

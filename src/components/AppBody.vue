@@ -8,11 +8,17 @@
 <!---------------- Template ------------------------>
 <template>
 
-    <header>
+    <main>
+        <h1>ok</h1>
+        <!-- Description-->
+      
+      
+        <!-- Image -->
+      
+      
+        <!-- Choices -->
 
-        <h1>Unfair Family</h1>
-
-    </header>
+    </main>
 
 </template>
 
@@ -23,11 +29,9 @@
 
 @use '../assets/scss/vars' as *;
 
-header {
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
+main {
+    height: 70vh;
 }
+
 
 </style>
