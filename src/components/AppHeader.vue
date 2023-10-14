@@ -25,10 +25,6 @@
 
 header {
 
-    height: 100px;
-    color: white;
-    background-color: $primaryCol;
-
     display: flex;
     align-items: center;
     justify-content: center;

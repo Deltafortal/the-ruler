@@ -1,11 +1,12 @@
 <!---------------- Script ------------------------>
 <script>
 
-import AppHeader from './components/AppHeader.vue'
+import AppHeader from './components/AppHeader.vue';
+import AppFooter from './components/AppFooter.vue';
 
 export default {
 
-  components: { AppHeader },
+  components: { AppHeader, AppFooter },
 
   data() {
     return {
@@ -44,9 +45,7 @@ export default {
     
     
   <!-- Footer -->
-  <footer>
-      
-  </footer>
+  <AppFooter />
 
     
 </template>
@@ -56,6 +55,6 @@ export default {
 <!---------------- style ------------------------>
 <style lang="scss">
 
-@use './assets//scss/style.scss';
+@use './assets/scss/style.scss';
 
 </style>
