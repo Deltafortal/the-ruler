@@ -7,21 +7,32 @@ export default {
     
     data() {
         return {
-            store:store,
+            store: store,
+            maxCards: store.events.length,
+            r: null
         }
     },
 
     methods: {
         callEvent() {
-
+            this.r = Math.floor(Math.random() * this.maxCards)
+            return this.r
         },
 
         manageEffects(effect){
 
             if(effect.money){
                 this.store.money += effect.money;
+            };
+
+            if(effect.happines) {
+                this.store.happines += effect.happines;
             }
         }
+    },
+
+    created() {
+        this.callEvent()
     }
 
 }
@@ -38,20 +49,20 @@ export default {
         <div class="card">
             <div class="card-body">
                 <div class="content">
-                    <p class="card-text pb-2">{{ this.store.events[0].description }}</p>
-                    <img :src=" this.store.events[0].image" class="card-img pb-2" :alt="this.store.events[0].subject">
+                    <p class="card-text pb-2">{{ this.store.events[this.r].description }}</p>
+                    <img :src=" this.store.events[this.r].image" class="card-img pb-2" :alt="this.store.events[this.r].subject">
                 </div>
                 
                 <div class="choices">
-                    <button class="response-one btn" @click="manageEffects(this.store.events[0].responses[0].effect)">
-                        {{ this.store.events[0].responses[0].title }}
+                    <button class="response-one btn" @click="manageEffects(this.store.events[this.r].responses[0].effect)">
+                        {{ this.store.events[this.r].responses[0].title }}
                     </button>
-                    <button class="response-two btn" @click="manageEffects(this.store.events[0].responses[1].effect)">
-                        {{ this.store.events[0].responses[1].title }}
+                    <button class="response-two btn" @click="manageEffects(this.store.events[this.r].responses[1].effect)">
+                        {{ this.store.events[this.r].responses[1].title }}
                     </button>
                 </div>
 
-                <h5 class="card-title">{{ this.store.events[0].subject }}</h5>
+                <h5 class="card-title">{{ this.store.events[this.r].subject }}</h5>
             </div>
         </div>
 
