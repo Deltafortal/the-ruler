@@ -1,13 +1,44 @@
+<!---------------- Script ------------------------>
 <script setup>
 
 </script>
 
+
+
+<!---------------- Template ------------------------>
 <template>
 
-  <h1 class="bg-primary">Ciao</h1>
+
+  <!-- Header -->
+  <header>
+
+  </header>
+
+  
+  <!-- Body -->
+  <body>
+
+    <!-- Description-->
+
+
+    <!-- Image -->
+
+    
+    <!-- Choices -->
+
+  </body>
+
+
+  <!-- Footer -->
+  <footer>
+
+  </footer>
 
 </template>
 
+
+
+<!---------------- style ------------------------>
 <style>
 
 </style>
