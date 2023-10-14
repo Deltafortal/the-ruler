@@ -1,6 +1,11 @@
 <!---------------- Script ------------------------>
 <script>
+import AppCard from './AppCard.vue';
 
+export default {
+    components: { AppCard },
+
+}
 </script>
 
 
@@ -9,14 +14,8 @@
 <template>
 
     <main>
-        <h1>ok</h1>
-        <!-- Description-->
-      
-      
-        <!-- Image -->
-      
-      
-        <!-- Choices -->
+
+        <AppCard />
 
     </main>
 
@@ -31,6 +30,9 @@
 
 main {
     height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 

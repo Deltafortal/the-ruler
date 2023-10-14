@@ -17,9 +17,9 @@
             </div>
 
 
-            <!-- Military Strenght -->
-            <div class="military token">
-                M
+            <!-- Notoriety -->
+            <div class="notoriety token">
+                N
             </div>
 
 
