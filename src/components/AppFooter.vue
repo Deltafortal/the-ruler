@@ -28,9 +28,9 @@
                 F
             </div>
 
-            <!-- Popularity -->
-            <div class="popularity token">
-                P
+            <!-- Happines -->
+            <div class="happines token">
+                H
             </div>
 
         </div>
