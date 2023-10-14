@@ -1,5 +1,21 @@
 <!---------------- Script ------------------------>
-<script setup>
+<script>
+
+import AppHeader from './components/AppHeader.vue'
+
+export default {
+
+  components: { AppHeader },
+
+  data() {
+    return {
+      
+      
+    }
+  },
+  
+
+} 
 
 </script>
 
@@ -8,32 +24,34 @@
 <!---------------- Template ------------------------>
 <template>
 
-
-  <!-- Header -->
-  <header>
-
-  </header>
-
-  
-  <!-- Body -->
-  <body>
-
-    <!-- Description-->
-
-
-    <!-- Image -->
+  <div class="container">
 
     
-    <!-- Choices -->
+    <!-- Header -->
+    <AppHeader />
+    
+    
+    <!-- Body -->
+    <body>
+      
+      <!-- Description-->
+      
+      
+      <!-- Image -->
+      
+      
+      <!-- Choices -->
+      
+    </body>
+    
+    
+    <!-- Footer -->
+    <footer>
+      
+    </footer>
 
-  </body>
-
-
-  <!-- Footer -->
-  <footer>
-
-  </footer>
-
+  </div>
+    
 </template>
 
 
