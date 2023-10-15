@@ -1,10 +1,11 @@
 <!---------------- Script ------------------------>
 <script>
-import { store } from '../js/store.js'
-
+import { store } from '../js/store.js';
+import GoModal from './GoModal.vue';
 
 export default {
     
+    components: {GoModal},
     data() {
         return {
             store: store,
@@ -19,9 +20,6 @@ export default {
 
         // Call the event
         callEvent() {
-
-            // Check if the game is over
-            this.gameOver()
 
             this.r = Math.floor(Math.random() * this.maxCards);
 
@@ -50,12 +48,9 @@ export default {
                 this.store.happines += effect.happines;
             }
 
-            // Game over
-            if(effect.gameOver) {
-                console.log('over');
-            }
-
-
+            // Check if the game is over
+            this.gameOver()
+            
             this.day += 1;
             this.callEvent()
         },
@@ -66,23 +61,33 @@ export default {
 
             for(let i = 0; i < attributes.length; i++) {
 
-                if(this.checkStats(0, attributes[i])){
+                if((this.checkStats(0, attributes[i])) || this.checkStats(100, attributes[i])){
                     console.log('over')
-                }
+                };
+
             }
         },
 
-        //Check all Stats
+        //Check Stats
         checkStats(param, attribute){
 
-            if(attribute.value <= param) {
+            let info = {};
+
+            if(attribute.value == param) {
+                this.store.lastCheckedStats = {
+                    outcome: true,
+                    param,
+                    attribute,
+                }
                 return true
-            }
+            };
+
         }
     },
 
     created() {
         this.callEvent()
+        this.gameOver()
     },
 
 }
@@ -118,6 +123,7 @@ export default {
 
     </div>
 
+    <GoModal />
 </template>
 
 
