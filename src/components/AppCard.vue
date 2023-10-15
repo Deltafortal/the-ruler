@@ -9,31 +9,55 @@ export default {
         return {
             store: store,
             maxCards: store.events.length,
-            r: null
+            inventory: [],
+            r: null,
+            day: 1,
         }
     },
 
     methods: {
+
         callEvent() {
-            this.r = Math.floor(Math.random() * this.maxCards)
+            this.r = Math.floor(Math.random() * this.maxCards);
+
+            if(this.store.events[this.r].condition){
+                
+
+                if(!this.inventory.includes(this.store.events[this.r].condition)) {
+                    console.log('richiamo')
+                    this.callEvent()
+                }
+            }
+
             return this.r
         },
 
         manageEffects(effect){
 
+            // Money
             if(effect.money){
                 this.store.money += effect.money;
             };
 
+            // Happines
             if(effect.happines) {
                 this.store.happines += effect.happines;
             }
+
+            // Game over
+            if(effect.gameOver) {
+                console.log('over');
+            }
+
+
+            this.day += 1;
+            this.callEvent()
         }
     },
 
     created() {
         this.callEvent()
-    }
+    },
 
 }
 
