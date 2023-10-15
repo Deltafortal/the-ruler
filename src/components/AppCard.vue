@@ -17,14 +17,19 @@ export default {
 
     methods: {
 
+        // Call the event
         callEvent() {
+
+            // Check if the game is over
+            this.gameOver()
+
             this.r = Math.floor(Math.random() * this.maxCards);
 
+            //Check if has condition
             if(this.store.events[this.r].condition){
                 
-
+                //Check if the condition is in the inventory
                 if(!this.inventory.includes(this.store.events[this.r].condition)) {
-                    console.log('richiamo')
                     this.callEvent()
                 }
             }
@@ -32,6 +37,7 @@ export default {
             return this.r
         },
 
+        // Manage effect of the events
         manageEffects(effect){
 
             // Money
@@ -52,6 +58,26 @@ export default {
 
             this.day += 1;
             this.callEvent()
+        },
+
+        // Go to Game Over 
+        gameOver(){
+            const attributes = this.store.attributes;
+
+            for(let i = 0; i < attributes.length; i++) {
+
+                if(this.checkStats(0, attributes[i])){
+                    console.log('over')
+                }
+            }
+        },
+
+        //Check all Stats
+        checkStats(param, attribute){
+
+            if(attribute.value <= param) {
+                return true
+            }
         }
     },
 

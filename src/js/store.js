@@ -5,8 +5,16 @@ const dad = '';
 
 export const store = reactive({
 
-    money: 10,
-    happines: 100,
+    attributes: [
+        {
+            label: 'money',
+            value: 10,
+        },
+        {
+            label: 'happines',
+            value: 50
+        }
+    ],
 
     events: [
         {
