@@ -8,11 +8,11 @@ export const store = reactive({
     attributes: [
         {
             label: 'money',
-            value: 100,
+            value: 50,
         },
         {
             label: 'happines',
-            value: 50
+            value: 0,
         }
     ],
 
