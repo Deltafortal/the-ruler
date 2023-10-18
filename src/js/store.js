@@ -2,17 +2,21 @@ import { reactive } from "vue";
 
 const mom = 'https://i.pinimg.com/1200x/9a/9b/be/9a9bbe2c7bbbb1ce0a57dc12f26789d7.jpg';
 const dad = '';
+const teresa = '';
 
 export const store = reactive({
+
+    day: 1,
+    isGameOver: false,
 
     attributes: [
         {
             label: 'money',
-            value: 50,
+            value: 10,
         },
         {
             label: 'happines',
-            value: 0,
+            value: 10,
         }
     ],
 
@@ -66,6 +70,96 @@ export const store = reactive({
                 }
             ]
         },
+        {
+            id: 2,
+            subject: 'Teresa',
+            description: 'Oh cavolo, Teresa sta fumando una sigaretta in camera sua!',
+            image: teresa,
+
+            responses:[
+
+                {
+                    title: 'Sgridala',
+                    effect: {
+                        happines: -10,
+                    }
+                }, 
+                {
+                    title: 'Fai finta di niente',
+                    effect: {
+                        item: 'smokeIgnored'
+                    }
+                }
+            ]
+        },
+        {
+            id: 3,
+            subject: 'Teresa',
+            description: 'Teresa è stata beccata a copiare il compito in classe di matematica',
+            image: teresa,
+
+            responses:[
+
+                {
+                    title: 'Sgridala',
+                    effect: {
+                        happines: -10,
+                    }
+                }, 
+                {
+                    title: 'Fai finta di niente',
+                    effect: {
+                        item: 'ignoredCopiedExam'
+                    }
+                }
+            ]
+        },
+        {
+            id: 4,
+            subject: 'Teresa',
+            description: 'Papà ho bisogno che mi presti la macchina per andare dalla mia amica.',
+            image: teresa,
+
+            responses:[
+
+                {
+                    title: 'Presta la macchina',
+                    effect: {
+                        item: 'gaveCar'
+                    }
+                }, 
+                {
+                    title: 'Non prestare',
+                    effect: {
+                        happines: -10,
+                    }
+                }
+            ]
+        },
+        {
+            id: 5,
+            subject: 'Teresa',
+            condition: 'gaveCar',
+            description: 'Teresa ha avuto un incidente stradale, ha bisogno di cure mediche alla svelta oppure morirà',
+            image: teresa,
+
+            responses:[
+
+                {
+                    title: 'Compra le cure mediche',
+                    effect: {
+                        money: -20
+                    }
+                }, 
+                {
+                    title: 'Non comprare',
+                    effect: {
+                        item: ''
+                    }
+                }
+            ]
+        },
+        
 
     ],
 

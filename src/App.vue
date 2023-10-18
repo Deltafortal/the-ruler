@@ -4,10 +4,11 @@
 import AppHeader from './components/AppHeader.vue';
 import AppFooter from './components/AppFooter.vue';
 import AppBody from './components/AppBody.vue';
+import GoModal from './components/GoModal.vue';
 
 export default {
 
-  components: { AppHeader, AppBody, AppFooter },
+  components: { AppHeader, AppBody, AppFooter, GoModal },
 
   data() {
     return {
@@ -25,19 +26,24 @@ export default {
 <!---------------- Template ------------------------>
 <template>
 
-    
-  <!-- Header -->
-  <AppHeader />
-    
-    
-  <!-- Body -->
-  <AppBody />
-    
-    
-  <!-- Footer -->
-  <AppFooter />
+    <div class="">
 
-    
+      <!-- Header -->
+      <AppHeader />
+      
+      
+      <!-- Body -->
+      <AppBody />
+      
+      
+      <!-- Footer -->
+      <AppFooter />
+      
+      
+    </div>
+
+    <!-- Game Over Modal-->
+    <GoModal />
 </template>
 
 
@@ -46,5 +52,6 @@ export default {
 <style lang="scss">
 
 @use './assets/scss/style.scss';
+
 
 </style>

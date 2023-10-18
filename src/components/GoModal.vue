@@ -8,6 +8,7 @@ export default {
             store: store,
             reason: '',
             currentMessage: '',
+            currentImage: '',
 
             messages: 
             [
@@ -27,7 +28,7 @@ export default {
                 },
                 {
                     message: 
-                    'Troppo Felice',
+                    'Hai passato la tua vita a rendere felice la tua famiglia, alla fine sembravate aver raggiunto livelli di felicità assoluti, tuttavia a qualcuno questo non andava bene... tu e la tua famiglia venite assassinati nel sonno',
                     image: '',
                 },
             ]
@@ -38,10 +39,24 @@ export default {
         //Assign the right message
         assignMessage(){
 
-            if(this.reason === 'noMoney') { return this.currentMessage = this.messages[0].message};
-            if(this.reason === 'toMoney') { return this.currentMessage = this.messages[1].message};
-            if(this.reason === 'noHappy') { return this.currentMessage = this.messages[2].message};
-            if(this.reason === 'toHappy') { return this.currentMessage = this.messages[3].message};
+            if(this.reason === 'noMoney') { return [this.currentMessage = this.messages[0].message, this.currentImage = this.messages[0].image];};
+            if(this.reason === 'toMoney') { return this.currentMessage = this.messages[1].message;};
+            if(this.reason === 'noHappy') { return this.currentMessage = this.messages[2].message;};
+            if(this.reason === 'toHappy') { return this.currentMessage = this.messages[3].message;};
+        },
+
+        restartGame(){
+            
+            //set attributes to default value
+            for(let i = 0; i < this.store.attributes.length; i++) {
+                this.store.attributes[i].value = 50;
+            }
+            
+            //Reset days
+            this.store.day = 1;
+
+            //Close go modal
+            this.store.isGameOver = false;
         }
     },
 
@@ -57,15 +72,15 @@ export default {
                 // Control if money
                 if(attribute.label === 'money') {
 
-                    if(attribute.value === 0) { this.reason = 'noMoney'}
-                    if(attribute.value === 100) { this.reason = 'toMoney'}
+                    if(attribute.value <= 0) { this.reason = 'noMoney'}
+                    if(attribute.value <= 100) { this.reason = 'toMoney'}
                 }
 
                 // Control if happy
                 if(attribute.label === 'happines') {
 
-                    if(attribute.value === 0) { this.reason = 'noHappy'}
-                    if(attribute.value === 100) { this.reason = 'toHappy'}
+                    if(attribute.value <= 0) { this.reason = 'noHappy'}
+                    if(attribute.value <= 100) { this.reason = 'toHappy'}
                 }
 
             }
@@ -83,27 +98,23 @@ export default {
 <!---------------- Template ------------------------>
 <template>
 
-    <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#goModal">
-        Launch static backdrop modal
-    </button>
-
     <!-- Modal -->
-    <div class="modal fade" id="goModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="goModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-        <div class="modal-header">
-            <h1 class="modal-title fs-5" id="goModalLabel">Game over</h1>
+    <div class="go-window text-center" :class="this.store.isGameOver === false ? 'hide' : ''" >
+        <div class="go-dialog">
+            <div class="content">
+            <div class="content-header">
+                <h1 class="fs-5 mt-4">Game over</h1>
+                <img class="my-5" :src="this.currentImage" :alt="this.currentMessage">
+            </div>
+            <div class="content-body mb-5">
+                  {{ this.currentMessage}} 
+            </div>
+            <div class="content-footer">
+                <button @click="restartGame" type="button" class="btn btn-secondary">Rigioca</button>
+            </div>
+            </div>
         </div>
-        <div class="modal-body">
-            {{ this.currentMessage }}
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Understood</button>
-        </div>
-        </div>
-    </div>
+
     </div>
 
 </template>
@@ -111,10 +122,25 @@ export default {
 
 
 <!---------------- style ------------------------>
-<style lang="scss">
+<style lang="scss" scoped>
 
 @use '../assets/scss/vars' as *;
 
+.go-window {
+    background-color: rgb(153, 91, 91);
+    border-radius: 15px;
+    padding: 20px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
 
+    display: block;
+
+}
+.hide {
+    display: none;
+}
 
 </style>
